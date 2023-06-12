@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurate Order App</title>
+</head>
+
+<body>
+    <header>
+        <h1 style="text-align: center; ">Restaurate Order App</h1>
+    </header>
+    
+    <form onsubmit="saveToLocalStorage(event)">
+        
+        <label>price</label>
+        <input type="number" id="price" name="price" required >
+
+        <label>Choose Dish</label>
+        <input type="text" id="dish" name="dish"  required>
+
+        <label>Phone</label>
+        <select id="mySelect">
+            <option value="option1">Table 1</option>
+            <option value="option2">Table 2</option>
+            <option value="option3">Table 3</option>
+        </select>
+
+        <button>Submit</button>
+
+    </form>
+
+    <div>
+        <h1>Order</h1>
+    </div>
+
+    <!-- <ul id="listOfUsers">
+
+        <div>
+            <h2>Table 1</h2>
+        </div>
+
+        <div>
+            <h2>Table 2</h2>
+        </div>
+
+        <div>
+            <h2>Table 3</h2>
+        </div>
+
+    </ul> -->
+
+    <ul id="table1">
+        <h2>Table 1</h2>
+    </ul>
+    <ul id="table2">
+        <h2>Table 2</h2>
+    </ul>
+    <ul id="table3">
+        <h2>Table 3</h2>
+    </ul>
+
+    <script src="main.js"></script>
+
+    <!-- axios -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js"></script>
+</body>
+</html>
