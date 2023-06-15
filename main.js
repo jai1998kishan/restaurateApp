@@ -2,17 +2,19 @@ function saveToLocalStorage(event) {
     event.preventDefault();
     const price = event.target.price.value;
     const dish = event.target.dish.value;
+    // const tableNumber=event.target.mySelect.value;
     
   
     const obj = {
       price,
-      dish
+      dish,
+      // tableNumber
     
     };
   
     axios
       .post(
-        "https://crudcrud.com/api/82262cbcb2d846edb19673aefbb29466/orderList",
+        "https://crudcrud.com/api/abe3db10c9c04c759ff99ec6d8ffbaa4/orderList",
         obj
       )
       .then((response) => {
@@ -35,7 +37,7 @@ function saveToLocalStorage(event) {
       //down code is to get data from the network when the page get reload
       axios
         .get(
-          "https://crudcrud.com/api/82262cbcb2d846edb19673aefbb29466/orderList")
+          "https://crudcrud.com/api/abe3db10c9c04c759ff99ec6d8ffbaa4/orderList")
         .then((response) => {
           console.log(response);
   
@@ -55,6 +57,7 @@ function saveToLocalStorage(event) {
   
     document.getElementById('price').value='';
     document.getElementById('dish').value='';
+    // document.getElementById('mySelect').value='';
     
     if(localStorage.getItem(user.price) !== null){
         removeUserFromScreen(user.price)
@@ -71,8 +74,8 @@ function saveToLocalStorage(event) {
   
   
     const parentNode = document.getElementById("listOfUsers");
-    const childHTML=`<li id=${user._id}> ${user.price} - ${user.dish}
-                      <button onclick=deleteUser('${user._id}')> Delete User</button>    
+    const childHTML=`<li id=${user._id}> ${user.price} - ${user.dish} 
+                      <button onclick=deleteUser('${user._id}')>Delete User</button>    
         
                       </li>`
      
@@ -90,20 +93,10 @@ function saveToLocalStorage(event) {
   }
   
   
-  //edit User
-  function editsUserDetails(userId,price,dish){
-    
-      document.getElementById('price').value=price;
-      document.getElementById('dish').value=dish;
-    
   
-      deleteUser(userId)
-  
-      
-  }
   
   function deleteUser(userId){
-      axios.delete(`https://crudcrud.com/api/82262cbcb2d846edb19673aefbb29466/orderList/${userId}`)
+      axios.delete(`https://crudcrud.com/api/abe3db10c9c04c759ff99ec6d8ffbaa4/orderList/${userId}`)
           .then((response)=>{
               removeUserFromScreen(userId)
           })
@@ -114,10 +107,13 @@ function saveToLocalStorage(event) {
   }
   
   function removeUserFromScreen(userId){
-      const parentNode=document.getElementById('listOfUsers');
-      const childNodeToBeDeleted=document.getElementById(userId);
-      if(childNodeToBeDeleted){
-          parentNode.removeChild(childNodeToBeDeleted)
-      }
+
+      const removeId=userId;
+      const liNode=document.getElementById(`${removeId}`);
+      liNode.remove();
+      // const childNodeToBeDeleted=document.getElementById(userId);
+      // if(childNodeToBeDeleted){
+      //     parentNode.removeChild(childNodeToBeDeleted)
+      // }
   }
   
